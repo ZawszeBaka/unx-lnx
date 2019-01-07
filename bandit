@@ -1,0 +1,65 @@
+## ssh
+ssh <username>@<domain> -p <port>
+
+ssh bandit11@bandit.labs.overthewire.org -p 2220
+
+
+## Find file with specified properties 
+find . -type f -size 1033c -user bandit0 -group bandit2 -exec cat {} \;
+
+1033c stands for 1033 bytes 
+
+## Read file , ignore errors 
+import codecs 
+with codecs.open(data.txt, 'r', encoding='utf-8', errors='ignore')
+
+or
+
+with codecs.open(data.txt, 'r', encoding='utf-8', errors='replace')
+
+## Encode or Decode base64
+import base64
+encoded = base64.b64encode('data to be encoded')
+
+data = base64.b64decode(encoded)
+
+## Encode or Decode base64 Script
+cat note.b64 | base64 -d 
+
+#stage 11
+ IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+
+# stderr 2> /dev/null
+find / -user root -group level3 2> /dev/null 
+
+# find unique lines in file 
+cat blah.txt | sort | uniq -u 
+
+# show process is running 
+ps -aux 
+
+# 
+netstat -plnt 
+
+# 
+nc localhost 4235
+
+for i in {0..2000}; do echo $i; done | nc localhost 4235 
+
+# connect to server 
+curl localhost 
+
+curl -i -d "username=admin&password=password&submit=Home" -X POST localhost 
+302 Redirect 
+curl localhost/super_secret_file.php
+
+-i for display header 
+
+# display my identity 
+id 
+user id : uid 
+group id : gid 
+
+# python script  
+python -c 'print open('flag.txt','r').read()'
+

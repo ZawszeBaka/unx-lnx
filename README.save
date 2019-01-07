@@ -1,0 +1,45 @@
+#ref: https://medium.com/@jacob16682/reverse-engineering-using-radare2-588775ea38d5
+
+# pull information out of a binary like strings, compile time, other useful
+# info 
+rabin2 -I <binaryfile>
+
+# list all of the strings from data section of binary
+rabin2 -z <binaryfile>
+
+# list all of the strings in the entire binary (not just in the data section)
+rabin2 -zz <binaryfile>
+
+# malware analysis
+r2 <bifile>
+
+# Analyze all flags starting with sym. and entry0 (aa)
+[0x00..540]> aa 
+
+# more 
+[0x00..540]> aaa 
+
+# more more 
+[0x00..540]> aaaa
+
+# 's' seek to spot in memory. This can either be used with an actual hex 
+# or we can type in a function name to seek to that. 
+# Since we know that most Linux programs start at the 'main' function
+[0x00..540]> s main 
+
+# Notice that the address in our cursor changed from 0x00000540 to 0x0000064a
+# This means we at the main function. 
+# Switch to visual mode 
+[0x00..64a]> v 
+
+# Change our view to the disassembly view! It has everything ! 
+[0x00..64a]> p
+
+# Conclusion 
+x64 app, putting string "Hello World" into rdi at the memory addr 0x00..64e 
+Call the function "sym.imp.puts" (or "puts"), which is the same as "printf"
+Print our string 
+After that, the "nop" cmd does absolutely nothing (like the pass cmd in python)
+We then clean up and end the function using "pop rbp" and "ret".
+Hence our function is done and, since this is the main function, our program
+is done as well

